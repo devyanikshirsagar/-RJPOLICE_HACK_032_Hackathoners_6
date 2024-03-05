@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation Results</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Your CSS styles for enhanced UI */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+            
+            
+            align-items: center; 
+            
+        }
+        header {
+            background-color:#00CED1;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+            
+        }
+        h1,h2, h3 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 2.5em;
+            
+            
+        }
+        h2 {
+            font-size: 1.8em;
+        }
+        h3 {
+            font-size: 1.5em;
+        }
+       
+        pre {
+            white-space: pre-wrap;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #40E0D0;
+            color: #fff;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items at the start vertically */
+            flex-wrap: wrap; /* Allow items to wrap if needed */
+        }
+        .accuracy-section {
+            width: 48%; /* Adjust the width as needed */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Model Evaluation Results</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Malware Detection Result</h2>
+            <p>{{ message1 }}<br></p>
+        </section>
+        <section>
+            <h2>Best Model: {{ best_model }}</h2>
+            <p>Best Model Accuracy: {{ best_accuracy }}</p>
+        </section>
+
+        <section>
+            <h2>Accuracy Comparison:</h2>
+            <img src="{{ url_for('static', filename='plot.png') }}" alt="Accuracy Comparison">
+            
+            <b><p>Overall Classification Accuracy: {{ accuracy }}</p></b>
+    <p>Random Forest Classification accuracy: {{ rf_accuracy }}</p>
+    <p>Decision Tree Classification accuracy: {{ dt_accuracy }}</p>
+    <p>SVM Classification accuracy: {{ svm_accuracy }}</p>
+    <p>Neural Network Classification accuracy: {{ mlp_accuracy }}</p><br></br>
+        </section>
+        
+
+        <section>
+            <div>
+      <h1>Classification Report</h1>
+        <h3>Random Forest:</h3>
+        {% if rf_report is defined %}
+            <pre>{{ rf_report }}</pre>
+        {% else %}
+            <p>No report available</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3>Decision Tree:</h3>
+        {% if dt_report is defined %}
+            <pre>{{ dt_report }}</pre>
+        {% else %}
+            <p>No report available</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3>SVM:</h3>
+        {% if svm_report is defined %}
+            <pre>{{ svm_report }}</pre>
+        {% else %}
+            <p>No report available</p>
+        {% endif %}
+    </div>
+
+    <div>
+        <h3>Neural Network :</h3>
+        {% if mlp_report is defined %}
+            <pre>{{ mlp_report }}</pre>
+        {% else %}
+            <p>No report available</p>
+        {% endif %}
+    </div>
+
+   
+        </section>
+<section>
+<h2>Classification Metrics Bar Chart:</h2>
+    <img src="data:image/png;base64,{{ img_str }}" alt="Classification Metrics Bar Chart">
+<div>
+    
+</section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Android Botnet Detection</p>
+    </footer>
+</body>
+</html> 
+

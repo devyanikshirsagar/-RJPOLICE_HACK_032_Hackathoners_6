@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: Indigo; /* Background color */
+        }
+   header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;S
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better visibility */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px; /* Padding for the form */
+        }
+
+        .signup-form {
+            width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+    header h1 {
+            margin: 0;
+          color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+    </style>
+</head>
+<body>
+<header>
+        <h1>Android Botnet Detection</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="signup-form">
+            <h1>Sign Up</h1>
+            <form action="/signup" method="post" onsubmit="return validateForm()">
+                <input type="text" id="username" name="username" placeholder="Username"><br>
+                <input type="password" id="password" name="password" placeholder="Password"><br>
+                <input type="email" id="email" name="email" placeholder="Email"><br>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+
+            if (username === "" || email === "" || password === "") {
+                if (username === "") {
+                    alert("Username must be filled out");
+                }
+                if (email === "") {
+                    alert("Email must be filled out");
+                }
+                if (password === "") {
+                    alert("Password must be filled out");
+                }
+                return false;
+            }
+
+            var emailRegex = /^[^\s@]+@gmail\.com$/;
+            if (!email.match(emailRegex)) {
+                alert("Invalid email format. Please provide a Gmail address (example: user@gmail.com).");
+                return false;
+            }
+
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+            if (!password.match(passwordRegex)) {
+                alert("Password should contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long");
+                return false;
+            }
+
+            var usernameRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]{6,}$/;
+            if (!username.match(usernameRegex)) {
+                alert("Username should be 6 characters long with at least 1 Alphabet and at least 1 special character");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 50px auto;
+  }
+  
+  .contact-form {
+    width: 60%;
+  }
+  
+  .contact-form h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form p {
+    font-size: 16px;
+    color: #7e7e7e;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #767676;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #b0ab4d;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #a09e45;
+  }
+  
+  .social-media {
+    width: 35%;
+  }
+  
+  .social-media h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  

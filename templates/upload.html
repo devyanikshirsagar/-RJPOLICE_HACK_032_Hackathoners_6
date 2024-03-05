@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload CSV File</title>
+    <style>
+        /* Common styles */
+        body {
+            background-color: Purple;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: right;
+            padding: 20px;S
+            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background for better visibility */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px; /* Padding for the form */
+        }
+
+        header h1 {
+            margin: 0;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Upload form styles */
+        .upload-form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="container">
+    <div class="upload-form">
+        <h2>Upload CSV File</h2>
+
+            </ul>
+       {% if message %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+        <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="return validateFile()">
+            <p>Please upload your file in CSV format.</p>
+            <p>Maximum file size: 1GB</p>
+            <input type="file" id="file" name="file" accept=".csv" maxlength="1073741824"><br><br>
+            <input type="submit" value="Upload">
+        </form>
+{% if redirect_url %}
+                <a href="{{ redirect_url }}" class="btn btn-primary">Go to Result Page</a>
+            {% endif %}
+        <form action="/print_data" method="post">
+            <input type="submit" value="View Uploaded Data">
+        </form>
+
+ 
+    </div>
+</div>
+
+    <script>
+        function validateFile() {
+            const fileInput = document.getElementById('file');
+            const filePath = fileInput.value;
+            const allowedExtensions = /(\.csv)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Please upload file having extensions .csv only.');
+                fileInput.value = '';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
